@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "ccd7df4e-6d01-46df-bb29-b7b331ae3e12",
+		"name": "Dream Games",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16742233"
+	},
+	"item": [
+		{
+			"name": "Create User Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Elliott\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Level Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/2075",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"2075"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enter Tournament Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/tournament/2075",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tournament",
+						"2075"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Leaderboard Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/2075",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"2075"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim Reward Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/receiveReward/2075",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"receiveReward",
+						"2075"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Rank Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/pastRanks/2075",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"pastRanks",
+						"2075"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Country Leaderboard Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/tournament/countryLeaderboard?page=0&size=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tournament",
+						"countryLeaderboard"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"description": "optional"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
