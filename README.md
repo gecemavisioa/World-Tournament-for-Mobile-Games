@@ -1,4 +1,8 @@
-# Dream Games - Case Study
+# World Tournament Backend for Mobile Games
+
+This is a World Tournament Backend implementation for mobile games.
+
+It is implemented to satisfy the following ![requirements]().
 
 ## How to Run and Use Endpoints
 
@@ -14,7 +18,7 @@ I have exported a Postman Collection v2.1 into Postman Template folder. You can 
 
 ## Database Design
 
-The User table includes requested fields in the requirements and additionally version field. The introduction of the version field is aimed at achieving optimistic locking, users should proceed levels and get more coins while they are already in queue. If tournament fee payment and proceeding level occur concurrently, optimistic lock error is thrown for one of them. Also, there was another field which represents rewards, but I decided to move rewards to another table. While sending rewards to user, user may proceed level and this would cause concurrency problems. 
+The User table includes requested fields in the requirements and additionally version field. The introduction of the version field is aimed at achieving optimistic locking, users should proceed levels and get more coins while they are already in queue. If tournament fee payment and proceeding level occur concurrently, optimistic lock error is thrown for one of them. Also, there was another field which represents rewards, but I decided to move rewards to another table. While sending rewards to user, user may proceed level and this would cause concurrency problems.
 
 The User table establishes a OneToMany relationship with the UserRank table. To optimize performance and prevent redundant data loading, FetchType.LAZY is set for all OneToMany relations. Additionally, a custom JQuery is implemented for accessing to these relations when necessary.
 
@@ -36,19 +40,16 @@ In addition to the standard controller, service, repository, and entity packages
 
 - **Util Package**: Helper functions for keeping code files organized. This package has 4 classes:
 
-    - **CountryHelper**: Holds a list of five countries, providing functionality to return a country's index, a country index's for a corresponding country, and the generation of a random country during user creation. This class is used for creating user lists or country queues, eliminating the need for switch-case statements.
+  - **CountryHelper**: Holds a list of five countries, providing functionality to return a country's index, a country index's for a corresponding country, and the generation of a random country during user creation. This class is used for creating user lists or country queues, eliminating the need for switch-case statements.
 
-    - **SameScores**: Implements a function that accepts a list of GroupUser instances and returns a list of their respective ranks. For instance, in the case of two users sharing the highest score, the produced list would be [1, 1, 3, 4, 5]. This helper function is called in setting user rewards. For instance, if there are 2 first place holder then 10000 prize is shared among them.
+  - **SameScores**: Implements a function that accepts a list of GroupUser instances and returns a list of their respective ranks. For instance, in the case of two users sharing the highest score, the produced list would be [1, 1, 3, 4, 5]. This helper function is called in setting user rewards. For instance, if there are 2 first place holder then 10000 prize is shared among them.
 
-    - **UserQueue**: Manages a set of integers and a list of integer queues, users who pass all checks and are eligible to enter the queue are sent here. The logic for queue management is implemented within this class.
+  - **UserQueue**: Manages a set of integers and a list of integer queues, users who pass all checks and are eligible to enter the queue are sent here. The logic for queue management is implemented within this class.
 
-    - **ProcessTournamentResults**: While the function of this class could be implemented in the tournament service, its purpose is to enable the @Async call of the process function and maintain clean code. The class is called from the tournament service everyday at 20 for processing tournament results.
+  - **ProcessTournamentResults**: While the function of this class could be implemented in the tournament service, its purpose is to enable the @Async call of the process function and maintain clean code. The class is called from the tournament service everyday at 20 for processing tournament results.
 
 Unit-tests are implemented for all units belonging to the controller, service, repository, and util packages.
 
 ## Enter-Tournament Flow
 
-I want to share implementation of this flow in this seperate section since most of the implementation logic lies under this flow. The enter tournament request is sent from controller to tournament service. After completing join conditions, it is sent to UserQueue component. When a group formed returns to tournament service again and it is saved to database and return group leaderboard to controller. Finally response is set and returns to user. I will explain this flow with the following pseudocode:
-
-![pseudocode](https://github.com/gecemavisioa/multi/assets/73769340/5b1f8aab-8c16-4421-98e9-c2924991d664)
-
+I want to share implementation of this flow in this seperate section since most of the implementation logic lies under this flow. The enter tournament request is sent from controller to tournament service. After completing join conditions, it is sent to UserQueue component. When a group formed returns to tournament service again and it is saved to database and return group leaderboard to controller. Finally response is set and returns to user.
