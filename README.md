@@ -24,7 +24,7 @@ The User table establishes a OneToMany relationship with the UserRank table. To 
 
 The Tournament table features id and date fields and establishes a OneToMany relationship with the TournamentGroup table. Furthermore, both TournamentGroup and User tables share a OneToMany relationship with the GroupUser table, where users' tournament group and scores are stored. Finally the reward table which holds user's and their rewards.
 
-![ER Diagram](https://github.com/gecemavisioa/multi/assets/73769340/8fade299-1d19-4225-a88b-fd628c1032df)
+![Ekran görüntüsü 2024-02-18 142646](https://github.com/gecemavisioa/World-Tournament-for-Mobile-Games/assets/73769340/f0d68845-76b0-4289-a024-7bb70d722341)
 
 ## Project Organization
 
