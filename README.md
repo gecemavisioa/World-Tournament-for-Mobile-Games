@@ -2,7 +2,7 @@
 
 This is a World Tournament Backend implementation for mobile games.
 
-It is implemented to satisfy the following ![requirements]().
+It is implemented to satisfy the following ![requirements](https://github.com/gecemavisioa/World-Tournament-for-Mobile-Games/blob/master/Requirements.pdf).
 
 ## How to Run and Use Endpoints
 
